@@ -165,6 +165,7 @@ jQuery(function ($) {
                 index++;
                 loadTrack(index);
                 audio.play();
+				console.log("Audio source:", audio.src);
             } else {
                 audio.pause();
                 index = 0;
@@ -177,6 +178,7 @@ jQuery(function ($) {
                 loadTrack(index);
                 if (playing) {
                     audio.play();
+					console.log("Audio source:", audio.src);
                 }
             } else {
                 audio.pause();
@@ -190,6 +192,7 @@ jQuery(function ($) {
                 loadTrack(index);
                 if (playing) {
                     audio.play();
+					console.log("Audio source:", audio.src);
                 }
             } else {
                 audio.pause();
@@ -213,7 +216,11 @@ jQuery(function ($) {
         playTrack = function (id) {
             loadTrack(id);
             audio.play();
+			console.log("Audio source:", audio.src);
         };
+		audio.onerror = function() {
+    console.log("Failed to load audio file: " + audio.src);
+};
         extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
         loadTrack(index);
     }
